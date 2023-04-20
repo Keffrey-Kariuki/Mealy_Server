@@ -57,7 +57,38 @@ class AuthController {
     }
 
     login(){
-        // TODO: Implement
+        this.app.post('/login', async (req, res) => {
+            const { name, email, password } = req.body;
+
+            try {
+                const dbUser = await User.findOne({
+                    where: {
+                        name: name,
+                        email : email
+                    }
+                })
+
+                const passwordCheck = await bcrypt.compare(password, dbUser.passwordHash)
+
+                if(passwordCheck) {
+                    res.json({
+                        "status": "successful",
+                        "message": passwordCheck
+                    })
+                } else {
+                    res.json({
+                        "status": "failed",
+                        "message": "password does not match"
+                    })
+                }    
+            } catch (error){
+                res.status(422).json({
+                    "status": "failed",
+                    "message": "user does not exist"
+                })
+            }
+
+        });
     }
 
 }
