@@ -32,6 +32,9 @@ const User = dbConn.define('users', {
 });
 
 // setup tables in DB
+User.hasMany(Meal, {
+    foreignKey: 'caterer'
+})
 User.sync();
 
 module.exports = {
