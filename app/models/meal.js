@@ -29,9 +29,9 @@ const Meal = dbConn.define('meals',{
     }
 })
 
-Meal.belongsTo(User, {
-    foreignKey: 'caterer'
-});
+// Meal.belongsTo(User, {
+//     foreignKey: 'caterer'
+// });
 
 Meal.sync();
 

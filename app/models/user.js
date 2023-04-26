@@ -2,6 +2,7 @@
 // ID, NAME, EMAIL, PASSWORD, IS_CATERER
 const { dbConn } = require('../../config/database');
 const { DataTypes } =  require('sequelize');
+const { Meal } = require('./meal');
 
 const User = dbConn.define('users', {
    id: {
@@ -32,9 +33,12 @@ const User = dbConn.define('users', {
 });
 
 // setup tables in DB
-User.hasMany(Meal, {
-    foreignKey: 'caterer'
-})
+// User.hasMany(Meal, {
+//     foreignKey: 'caterer'
+// })
+
+console.log("User data", typeof User)
+
 User.sync();
 
 module.exports = {
