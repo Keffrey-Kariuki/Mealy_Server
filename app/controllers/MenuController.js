@@ -5,7 +5,7 @@ const {User} = require('../models/user');
 class MenuController {
 
     app = null;
-    constructor(){
+    constructor(app){
         this.app = app;
     }
 
@@ -18,6 +18,8 @@ class MenuController {
 
     // create a menu
     createMenu(){
+
+        
 
     }
 
@@ -37,3 +39,5 @@ class MenuController {
     }
 
 }
+
+module.exports = MenuController
