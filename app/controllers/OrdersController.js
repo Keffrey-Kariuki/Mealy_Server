@@ -81,7 +81,7 @@ class OrdersController {
         this.app.get("/orders/view/:uid", async (req, res) => {
             try {
                 
-                console.log("uid = ==== =", uid)
+                const { uid } = req.params
                 const meals = await Order.findAll({
                     where: {
                       customer: parseInt(uid)  

@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const AuthController = require('./app/controllers/AuthController');
 const MealController = require('./app/controllers/MealController');
 const MenuController = require('./app/controllers/MenuController');
@@ -8,7 +9,8 @@ const OrdersController = require('./app/controllers/OrdersController');
 // set up express app
 const app = express();
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 // set up db associations
 require('./config/associations');
